@@ -8,7 +8,7 @@ const WilderCard = (props) => {
     <img src={blank_profile} alt="Jane Doe Profile" />
     <h3>{ props.wilder.name }</h3>
     <p>
-      Bonjour, je m'appelle { props.wilder.name}, j'habite a { props.wilder.city}
+      Bonjour, je m'appelle { props.wilder.name}, j'habite a { props.wilder.city}.
     </p>
     <h4>Wild Skills</h4>
     <ul className="skills">
