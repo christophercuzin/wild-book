@@ -1,8 +1,16 @@
+import { wildersService } from "../service/wildersService/wildersService"
+
 const Skills = (props) => {
   return (
     <li>
-      { props.skill }
-      <span className="votes">{ props.votes } </span>
+      { props.name }
+      <span 
+        className="votes"
+        onClick={async () => {
+            await wildersService.removeWilderSkill(props.wilderId, props.id)
+            props.fetchData()
+        }}
+      >x</span>
     </li>
   )
 }

@@ -1,7 +1,10 @@
 
+import React from 'react';
 import './App.css';
-import WilderCard from "./components/WilderCard"
-import { wildersData } from "./constant/wildersData"
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import AddWilder from './pages/Addwilder';
+
 
 function App() {
   return (
@@ -9,21 +12,16 @@ function App() {
       <header>
         <div className="container">
           <h1>Wilders Book</h1>
+          <a href={`/add-wilder`}>Add new wilder</a>
         </div>
       </header>
-      <main className="container">
-        <h2>Wilders</h2>
-        <section className="card-row">
-          {
-            wildersData.map((wilder) => {
-              return <WilderCard wilder={ wilder } />
-            })
-          }
-        </section>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add-wilder" element={<AddWilder />} />
+      </Routes>
       <footer>
         <div className="container">
-          <p>&copy; 2022 Wild Code School</p>
+          <p>&copy; 2023 Wild Code School</p>
         </div>
       </footer>
     </div>

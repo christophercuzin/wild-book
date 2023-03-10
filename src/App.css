@@ -132,3 +132,49 @@ footer {
    height: 20px;
    width: 20px; 
 }
+.form-container {
+  display: flex;
+  width: 100vw;
+  height: 70%;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  width: 800px;
+  padding: 30px 30px 30px 30px;
+}
+.form .input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 0px 10px 0px;
+  align-items: center;
+}
+
+.form .input-container > label {
+  width: 100%;
+  text-align: left;
+}
+.form .input-container .input {
+  width: 100%;
+  min-height: 36px;
+  border-radius: 7px;
+}
+.form .input-container > button {
+  min-height: 36px;
+  width: 100%;
+  margin-top: 10px;
+  background-color:#2b00ff;
+  color: white;
+  border-radius: 7px;
+}
+
+#error-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+
