@@ -4,7 +4,7 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import AddWilder from './pages/Addwilder';
-
+import { WildersProvider } from './contexts/WildersContext';
 
 function App() {
   return (
@@ -15,10 +15,12 @@ function App() {
           <a href={`/add-wilder`}>Add new wilder</a>
         </div>
       </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/add-wilder" element={<AddWilder />} />
-      </Routes>
+      <WildersProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/add-wilder" element={<AddWilder />} />
+        </Routes>
+      </WildersProvider>
       <footer>
         <div className="container">
           <p>&copy; 2023 Wild Code School</p>

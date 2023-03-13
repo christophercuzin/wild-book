@@ -1,21 +1,23 @@
-import axios from "axios"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import Input from "../components/Input"
 import { wildersService } from "../service/wildersService/wildersService";
+import { wildersContext } from '../contexts/WildersContext';
 
-const AddWilder = (props) => {
+const AddWilder = () => {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  
+  const {fetchData} = useContext(wildersContext)
+
   return (
     <div className="form-container">
       <form
         onSubmit={async (e) => {
           e.preventDefault();
           await wildersService.createWilder(name, email, city)
+          fetchData()
           navigate("/")
         }}
         className="form"

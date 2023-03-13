@@ -1,15 +1,20 @@
 import blank_profile from '../assets/blank_profile.png';
 import Skill from "../components/Skill"
-import Select from "../components/Select"
+import Modal from "../components/Modal"
 import { wildersService } from '../service/wildersService/wildersService';
+import { useContext } from 'react';
+import { wildersContext } from '../contexts/WildersContext';
 
 
 
 const WilderCard = (props) => {
-  const handelDeleteClick = async () => {
+  const {fetchData, handleOpenModal} = useContext(wildersContext)
+  
+  const handleDeleteClick = async () => {
     await wildersService.removeWilder(props.id)
-    props.fetchData()
+    fetchData()
   }
+  
   return (
   <article className="card">
     <img src={blank_profile} alt="Jane Doe Profile" />
@@ -27,21 +32,25 @@ const WilderCard = (props) => {
                     id={skill.id} 
                     name={skill.name} 
                     votes={ skill.votes} 
-                    fetchData={props.fetchData} 
                   />
         })
       }
     </ul>
       <button
         type="button"
-        onClick={handelDeleteClick}
+        onClick={handleDeleteClick}
       >
         remove
       </button>
-      <Select
-        skillsList={props.skillsList}
-        fetchData={props.fetchData}
-        wilderId={props.id}
+      <button
+        id={props.id.toString()}
+        type="button"
+        onClick={handleOpenModal}
+      >
+        Add skill
+      </button>
+      <Modal
+        id={props.id}
       />
   </article>
   )

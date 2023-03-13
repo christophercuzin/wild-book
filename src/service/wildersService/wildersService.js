@@ -10,12 +10,12 @@ export const wildersService = {
     await axios.post("http://localhost:5000/api/wilder", { name, email, city});
   },
   removeWilder: async (id) => {
-    await axios.delete(`http://localhost:5000/api/wilder/${id}`);
+    await axios.delete(`http://localhost:5000/api/wilder/${id}/delete`);
   },
   removeWilderSkill: async (wilderId, skillId) => {
-    await axios.delete(`http://localhost:5000/api/wilder/${wilderId}/skills/${skillId}/delete`)
+    await axios.delete(`http://localhost:5000/api/wilder/${wilderId}/skill/${skillId}/delete`)
   },
   addSkill: async (wilderId, skillId) => {
-    await axios.post(`http://localhost:5000/api/wilder/${wilderId}/skills/${skillId}/add`);
+    await axios.post(`http://localhost:5000/api/wilder/${wilderId}/skill/${skillId}/add`);
   },
 } 

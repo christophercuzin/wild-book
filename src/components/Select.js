@@ -1,7 +1,9 @@
 import { wildersService } from '../service/wildersService/wildersService';
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { wildersContext } from '../contexts/WildersContext';
 
 const Select = (props) => {
+  const {skills, fetchData, handleCloseModal} = useContext(wildersContext)
   const [skill, setSkill] = useState({})
   return (
     <form
@@ -9,7 +11,8 @@ const Select = (props) => {
       async (e) => {
         e.preventDefault()
         await wildersService.addSkill(props.wilderId, skill)
-        props.fetchData()
+        handleCloseModal()
+        fetchData()
       }
     }
     >
@@ -21,7 +24,7 @@ const Select = (props) => {
       >
         <option value="">--Please choose an option--</option>
         {
-          props.skillsList.map((skill) => {
+          skills.map((skill) => {
             return <option value={skill.id} key={skill.name}>{skill.name}</option>
           })
         }
